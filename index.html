@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>j.mtrx · liens</title>
 <meta name="description" content="Cybersécurité × vibecoding — tous mes liens.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0b0c0b;
@@ -17,7 +14,6 @@
     --dim: #7c837a;
     --green: #8fd694;
     --amber: #e8b44f;
-    --red: #e0675c;
   }
   * { box-sizing: border-box; margin: 0; }
   body {
@@ -46,7 +42,6 @@
     margin-bottom: 18px;
   }
   .prompt { color: var(--green); }
-  .prompt b { color: var(--dim); font-weight: 400; }
   .out { color: var(--text); margin: 2px 0 16px; }
   .out small { display: block; color: var(--dim); font-size: 13px; }
 
@@ -61,17 +56,12 @@
   .link:hover, .link:focus-visible { border-color: var(--green); transform: translateX(4px); }
   .link:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   .cmd { flex: 1; min-width: 0; font-weight: 600; }
-  .cmd span { color: var(--dim); }
   .cmd small { display: block; color: var(--dim); font-size: 13px; font-weight: 400; overflow-wrap: anywhere; }
   .arrow { color: var(--dim); }
   .link:hover .arrow { color: var(--green); }
 
   a.hot { border-color: var(--amber); }
-  a.hot .cmd span, a.hot .arrow { color: var(--amber); }
-  .link .cmd .tag {
-    font-size: 11px; color: var(--bg); background: var(--amber);
-    padding: 1px 6px; margin-left: 6px; vertical-align: 1px;
-  }
+  a.hot .arrow { color: var(--amber); }
 
   .cursor {
     display: inline-block; width: .6em; height: 1.1em; vertical-align: -3px;
@@ -92,7 +82,7 @@
     .js li { transform: none; transition: none; }
     .cursor { animation: none; }
   }
-  .prompt, .bar, .avatar, .tag, .services .ok, footer { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; }
+  .prompt, .bar, .avatar, .services .ok, footer { font-family: ui-monospace, Menlo, Consolas, monospace; }
   .prompt { font-size: 14px; margin-bottom: 6px; }
 </style>
 </head>
@@ -155,7 +145,8 @@
   const discord = document.getElementById('discord');
   discord.addEventListener('click', () => {
     const hint = document.getElementById('discord-hint');
-    navigator.clipboard.writeText(discord.dataset.user)
+    // Promise.resolve: a missing navigator.clipboard (some in-app browsers) still lands in .catch
+    Promise.resolve().then(() => navigator.clipboard.writeText(discord.dataset.user))
       .then(() => { hint.textContent = 'Copié ✓ Colle-le dans Discord > Ajouter un ami'; })
       .catch(() => { hint.textContent = 'Mon pseudo : ' + discord.dataset.user; });
   });
