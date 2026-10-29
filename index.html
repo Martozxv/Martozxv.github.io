@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>j.mtrx · liens</title>
+<meta name="description" content="Cybersécurité × vibecoding — tous mes liens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c0b;
+    --panel: #121412;
+    --line: #262a26;
+    --text: #d9dcd6;
+    --dim: #7c837a;
+    --green: #8fd694;
+    --amber: #e8b44f;
+    --red: #e0675c;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  main { width: 100%; max-width: 460px; }
+
+  .bar {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--dim);
+    border: 1px solid var(--line); border-bottom: 0;
+    padding: 8px 14px; background: var(--panel);
+  }
+  .term { border: 1px solid var(--line); padding: 22px 18px 18px; }
+
+  .avatar {
+    width: 72px; height: 72px; border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 26px; color: var(--green);
+    margin-bottom: 18px;
+  }
+  .prompt { color: var(--green); }
+  .prompt b { color: var(--dim); font-weight: 400; }
+  .out { color: var(--text); margin: 2px 0 16px; }
+  .out small { display: block; color: var(--dim); font-size: 13px; }
+
+  ul { list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 18px; }
+  .link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px; border: 1px solid var(--line);
+    color: var(--text); text-decoration: none;
+    transition: border-color .15s, transform .15s;
+    width: 100%; background: none; font: inherit; text-align: left; cursor: pointer;
+  }
+  .link:hover, .link:focus-visible { border-color: var(--green); transform: translateX(4px); }
+  .link:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .cmd { flex: 1; min-width: 0; font-weight: 600; }
+  .cmd span { color: var(--dim); }
+  .cmd small { display: block; color: var(--dim); font-size: 13px; font-weight: 400; overflow-wrap: anywhere; }
+  .arrow { color: var(--dim); }
+  .link:hover .arrow { color: var(--green); }
+
+  a.hot { border-color: var(--amber); }
+  a.hot .cmd span, a.hot .arrow { color: var(--amber); }
+  .link .cmd .tag {
+    font-size: 11px; color: var(--bg); background: var(--amber);
+    padding: 1px 6px; margin-left: 6px; vertical-align: 1px;
+  }
+
+  .cursor {
+    display: inline-block; width: .6em; height: 1.1em; vertical-align: -3px;
+    background: var(--green); animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { background: transparent; } }
+
+  footer { margin-top: 14px; font-size: 12px; color: var(--dim); text-align: center; }
+  .ok { color: var(--green); }
+  .services { gap: 8px; margin-bottom: 12px; }
+  .services li { padding-left: 1.15em; text-indent: -1.15em; }
+  .services small { display: block; text-indent: 0; color: var(--dim); font-size: 12px; }
+
+  /* links slide in once; content is already visible without JS */
+  .js li { transform: translateY(8px); transition: transform .35s ease-out; }
+  .js li.in { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js li { transform: none; transition: none; }
+    .cursor { animation: none; }
+  }
+  .prompt, .bar, .avatar, .tag, .services .ok, footer { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; }
+  .prompt { font-size: 14px; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="bar"><span>j.mtrx</span><span>🔒 sécurisé</span></div>
+  <section class="term">
+    <div class="avatar" aria-hidden="true">&gt;_</div>
+
+    <p class="out"><b>@j.mtrx</b>
+      <small>La cybersécurité expliquée simplement. Je protège tes comptes, tes données et tes applis.</small></p>
+
+    <p class="prompt">&gt; Mes liens</p>
+    <ul>
+      <!-- Modifie tes liens ici. Ajoute class="hot" pour en mettre un en avant. -->
+      <!-- Un pseudo Discord ne peut pas être lié sans l'identifiant numérique, donc on le copie. -->
+      <li><button class="link" type="button" id="discord" data-user="martozxv">
+        <span class="cmd">Discord
+          <small id="discord-hint">Touche pour copier mon pseudo : martozxv</small></span>
+        <span class="arrow">⧉</span></button></li>
+      <li><a class="link" href="mailto:mminojonas@gmail.com">
+        <span class="cmd">M'écrire
+          <small>Questions et partenariats</small></span>
+        <span class="arrow">→</span></a></li>
+      <li><a class="link" href="https://github.com/Bomboclqte" target="_blank" rel="noopener">
+        <span class="cmd">GitHub
+          <small>Mes outils gratuits, pour les curieux</small></span>
+        <span class="arrow">→</span></a></li>
+    </ul>
+
+    <p class="prompt">&gt; Travailler avec moi</p>
+    <ul class="services">
+      <li><span class="ok">1</span> Je vérifie si ton site ou ton appli est sécuritaire <small>Je trouve les failles avant les pirates.</small></li>
+      <li><span class="ok">2</span> Je teste ton site comme un pirate le ferait <small>Tu reçois un rapport clair avec les corrections à faire.</small></li>
+      <li><span class="ok">3</span> Je crée ton site ou ton appli, sécuritaire dès le départ <small>Rapide, solide, prêt à lancer.</small></li>
+    </ul>
+    <ul>
+      <li><a class="link hot" href="mailto:mminojonas@gmail.com?subject=Demande%20de%20prix&amp;body=Ton%20nom%20%3A%0ATon%20projet%20%3A%0AService%20voulu%20(1%2C%202%20ou%203)%20%3A%0ABudget%20%3A%0APour%20quand%20%3A%0A">
+        <span class="cmd">Demander un prix
+          <small>Réponse en 48 h</small></span>
+        <span class="arrow">→</span></a></li>
+    </ul>
+
+    <p class="prompt">&gt; Mes certifications</p>
+    <p class="out"><span class="ok">✓</span> CompTIA Security+ <small>Certification reconnue en sécurité informatique</small>
+      <span class="ok">✓</span> eJPT <small>Certification en piratage éthique (tester un site pour le protéger)</small></p>
+
+    <p class="prompt">&gt; Mes outils</p>
+    <p class="out">Claude&nbsp;Code · VS&nbsp;Code · Kali&nbsp;Linux · Supabase · Vercel</p>
+
+    <p class="prompt">~ $ <span class="cursor" aria-hidden="true"></span></p>
+  </section>
+  <footer><span class="ok">●</span> sécurisé · <span id="login">session ouverte</span></footer>
+</main>
+
+<script>
+  document.documentElement.classList.add('js');
+  const items = document.querySelectorAll('.js li');
+  items.forEach((li, i) => setTimeout(() => li.classList.add('in'), 120 + i * 90));
+  const discord = document.getElementById('discord');
+  discord.addEventListener('click', () => {
+    const hint = document.getElementById('discord-hint');
+    navigator.clipboard.writeText(discord.dataset.user)
+      .then(() => { hint.textContent = 'Copié ✓ Colle-le dans Discord > Ajouter un ami'; })
+      .catch(() => { hint.textContent = 'Mon pseudo : ' + discord.dataset.user; });
+  });
+  const d = new Date();
+  document.getElementById('login').textContent =
+    'session du ' + d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short' }) +
+    ' ' + d.toTimeString().slice(0, 5);
+</script>
+</body>
+</html>
